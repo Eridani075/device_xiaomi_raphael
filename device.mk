@@ -90,3 +90,7 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/xiaomi/raphael/raphael-vendor.mk)
+
+# Kernel
+PRODUCT_PACKAGES += \
+    kernel

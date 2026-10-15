@@ -6,3 +6,46 @@
 
 soong_namespace {
 }
+
+uwu_kernel {
+    name: "kernel",
+    kernel_dir: "kernel/xiaomi/sm8150",
+    kernel_arch: "arm64",
+    image_name: "Image.gz",
+    clang_version: "clang-r563880c",
+
+    config: {
+        defconfig: "vendor/sm8150-perf_defconfig",
+        fragments: [
+            "vendor/xiaomi/sm8150-common.config",
+            "vendor/xiaomi/raphael.config",
+        ],
+    },
+
+    dtb: {
+        enabled: true,
+        target: "dtbs",
+        image_name: "dtb.img",
+    },
+
+    dtbo: {
+        enabled: true,
+        target: "dtbs",
+        image_name: "dtbo.img",
+        page_size: 4096,
+    },
+
+    // BOARD_USES_SOONG_KERNEL makes fsgen require kernel_modules_recovery for
+    // the generated recovery image. This kernel is fully built-in (no =m),
+    // so point the installer at an empty list: it packages zero modules.
+    // List paths are resolved relative to the source tree root.
+    modules: {
+        enabled: true,
+        recovery_module_install_list: [
+            "device/xiaomi/raphael/configs/kernel/modules_recovery.list",
+        ],
+        recovery_module_load_list: [
+            "device/xiaomi/raphael/configs/kernel/modules_recovery.list",
+        ],
+    },
+}

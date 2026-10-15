@@ -32,7 +32,11 @@ BOARD_KERNEL_CMDLINE := $(filter-out androidboot.fstab_suffix=qcom,$(BOARD_KERNE
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.raphael
 
 # Kernel
-TARGET_KERNEL_CONFIG += vendor/xiaomi/raphael.config
+BOARD_USES_SOONG_KERNEL := true
+SOONG_KERNEL_MODULE := //device/xiaomi/raphael:kernel
+TARGET_KERNEL_VERSION := 4.14
+TARGET_NEEDS_DTBOIMAGE := true
+
 
 # Properties
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
