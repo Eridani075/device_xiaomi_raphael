@@ -9,7 +9,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+UWU_DEVICE_TYPE := phone
+UWU_SUPPORTS_TELEPHONY := true
+UWU_MAINTAINER := 0x70B4E93
+$(call inherit-product, vendor/uwu/config/common.mk)
 
 # Inherit from raphael device
 $(call inherit-product, device/xiaomi/raphael/device.mk)
@@ -21,7 +24,7 @@ TARGET_BUILD_APERTURE_CAMERA := false
 TARGET_HAS_UDFPS := true
 TARGET_INCLUDE_ACCORD := false
 
-PRODUCT_NAME := lineage_raphael
+PRODUCT_NAME := uwu_raphael
 PRODUCT_DEVICE := raphael
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_BRAND := Xiaomi
