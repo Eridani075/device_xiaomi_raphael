@@ -54,6 +54,14 @@ $(call inherit-product, vendor/xiaomi/dolby/config.mk)
 PRODUCT_PACKAGES += \
     DSPVolumeSynchronizer
 
+# Fstab
+# raphael ships its own fstab (erofs for the SSI partitions); it is selected at
+# boot by androidboot.fstab_suffix=raphael in BoardConfig.mk.
+PRODUCT_PACKAGES += \
+    fstab.raphael \
+    fstab.raphael.ramdisk \
+    fstab.raphael.vendor_ramdisk
+
 # Init
 $(call soong_config_set,xiaomi_msmnile,variant_lib,//$(LOCAL_PATH):libvariant_xiaomi_raphael)
 

@@ -20,6 +20,17 @@ TARGET_OTA_ASSERT_DEVICE := raphael,raphaelin
 # Display
 TARGET_SCREEN_DENSITY := 440
 
+# Filesystem
+# The 6GiB retrofit super has no room for ext4 images of the SSI partitions, so
+# every partition in the super group is erofs (lz4hc). The fstab that says so is
+# rootdir/etc/fstab.raphael, selected by androidboot.fstab_suffix=raphael; the
+# shared sm8150-common fstab stays untouched for the other sm8150 devices.
+BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
+BOARD_KERNEL_CMDLINE := $(filter-out androidboot.fstab_suffix=qcom,$(BOARD_KERNEL_CMDLINE)) androidboot.fstab_suffix=raphael
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.raphael
+
 # Kernel
 TARGET_KERNEL_CONFIG += vendor/xiaomi/raphael.config
 

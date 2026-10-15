@@ -1,0 +1,16 @@
+//
+// Copyright (C) 2021-2022 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// raphael ships its own fstab: the SSI partitions are erofs on this device,
+// which the shared sm8150-common fstab does not express. fs_mgr selects this
+// file because BoardConfig.mk sets androidboot.fstab_suffix=raphael.
+prebuilt_etc {
+    name: "fstab.raphael",
+    src: "etc/fstab.raphael",
+    vendor: true,
+    ramdisk_available: true,
+    vendor_ramdisk_available: true,
+}
