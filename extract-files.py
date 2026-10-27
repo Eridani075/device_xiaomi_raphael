@@ -188,10 +188,7 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.hardware.wifidisplaysession@1.0',
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
-    (
-        'libwfdconfigutils',
-        'vendor.qti.qspmhal@1.0',
-    ): lib_fixup_remove,
+    'vendor.qti.qspmhal@1.0': lib_fixup_remove,
 }
 
 namespace_imports = [
