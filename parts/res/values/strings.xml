@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2020-2022 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Haptic Level Settings -->
+    <string name="haptic_title">Haptic feedback</string>
+    <string name="haptic_warning">Setting-up haptic level too high may cause permanent hardware damage, use at your own risk</string>
+    <string name="haptic_summary">Customize vibration intensity</string>
+    <string name="haptic_level_title">Level</string>
+    <string name="haptic_level_summary">Amount of vibration intensity</string>
+    <string name="haptic_level_summary_incompatible">Feature not supported</string>
+
+    <!-- HBM tile -->
+    <string name="hbm_mode_title">High Brightness Mode</string>
+
+    <!-- DC dimming tile -->
+    <string name="dc_dimming_tile_title">DC dimming</string>
+
+    <!-- Bypass charging -->
+    <string name="bypass_charging_title">Bypass charging</string>
+    <string name="bypass_charging_summary">Power the phone from the charger without charging the battery</string>
+    <string name="bypass_charging_info">Useful while gaming on the charger: the battery stays cooler and isn\'t worn by charging under load. The battery still takes over instantly when the charger is unplugged, and it can still supplement the charger if the load is higher than the charger supplies. Turn this off to charge the battery again.</string>
+    <string name="bypass_charging_tile_on">Battery not charging</string>
+    <string name="bypass_charging_tile_off">Off</string>
+    <string name="bypass_charging_tile_blocked">Charging control is on</string>
+    <string name="bypass_charging_blocked">Unavailable while Charging control (Settings > Battery) is on, which manages the same charging switch</string>
+</resources>

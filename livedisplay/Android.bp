@@ -1,0 +1,37 @@
+//
+// SPDX-FileCopyrightText: 2019-2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_binary {
+    name: "vendor.lineage.livedisplay-service.xiaomi_sm8150",
+    vintf_fragments: [
+        "vendor.lineage.livedisplay_IAntiFlicker.xml",
+        "vendor.lineage.livedisplay_ISunlightEnhancement.xml",
+        "vendor.lineage.livedisplay-service.xiaomi_sm8150.xml",
+    ],
+    init_rc: ["vendor.lineage.livedisplay-service.xiaomi_sm8150.rc"],
+    relative_install_path: "hw",
+    srcs: [
+        ":vendor.lineage.livedisplay-sdm-pa",
+        ":vendor.lineage.livedisplay-sdm-utils",
+        "AntiFlicker.cpp",
+        "SunlightEnhancement.cpp",
+        "service.cpp",
+    ],
+    vendor: true,
+    shared_libs: [
+        "libbase",
+        "libbinder_ndk",
+        "libbinder",
+        "libutils",
+        "vendor.lineage.livedisplay-V1-ndk",
+    ],
+    header_libs: [
+        "vendor.lineage.livedisplay-sdm-headers",
+    ],
+    cflags: [
+        "-DSUPPORT_ANTI_FLICKER",
+        "-DSUPPORT_SUNLIGHT_ENHANCEMENT",
+    ],
+}

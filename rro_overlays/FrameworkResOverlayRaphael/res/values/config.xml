@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <bool name="config_enableHapticTextHandle">true</bool>
+    <string-array translatable="false" name="radioAttributes">
+        <item>"1,1"</item>
+        <item>"0,1"</item>
+        <item>"7,1"</item>
+    </string-array>
+    <bool name="config_unplugTurnsOnScreen">true</bool>
+    <bool name="config_lidControlsSleep">true</bool>
+    <integer-array name="config_availableColorModes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <integer name="config_accessibilityColorMode">2</integer>
+    <integer-array name="config_displayCompositionColorModes">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </integer-array>
+    <integer-array name="config_displayCompositionColorSpaces">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>9</item>
+    </integer-array>
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
+    <integer-array name="config_longPressVibePattern">
+        <item>0</item>
+        <item>10</item>
+    </integer-array>
+    <integer-array name="config_virtualKeyVibePattern">
+        <item>0</item>
+        <item>10</item>
+    </integer-array>
+    <bool name="config_intrusiveNotificationLed">true</bool>
+    <bool name="config_hotswapCapable">true</bool>
+    <item name="config_screenBrightnessDozeFloat" format="float" type="dimen">0.06667</item>
+    <bool translatable="false" name="skip_restoring_network_selection">true</bool>
+    <bool name="config_showNavigationBar">true</bool>
+    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
+    <bool name="config_dozePulsePickup">true</bool>
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
+    <bool name="config_enableNewAutoSelectNetworkUI">true</bool>
+    <bool name="config_enableWifiDisplay">true</bool>
+    <bool name="config_useDevInputEventForAudioJack">true</bool>
+    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
+    <bool name="config_device_volte_available">true</bool>
+    <bool name="config_carrier_volte_available">true</bool>
+    <bool name="config_device_vt_available">true</bool>
+    <bool name="config_device_wfc_ims_available">true</bool>
+    <bool name="config_carrier_wfc_ims_available">true</bool>
+    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
+    <integer name="config_num_physical_slots">2</integer>
+    <integer name="config_defaultRefreshRate">0</integer>
+    <integer name="config_defaultPeakRefreshRate">102</integer>
+    <bool name="config_supportDoubleTapWake">true</bool>
+    <bool name="config_supportAudioSourceUnprocessed">true</bool>
+    <bool name="config_sustainedPerformanceModeSupported">true</bool>
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/framework.jar"</item>
+        <item>"/system/framework/services.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-oj.jar"</item>
+        <item>"/apex/com.android.art/javalib/core-libart.jar"</item>
+        <item>"/system_ext/priv-app/SystemUIGoogle/SystemUIGoogle.apk"</item>
+        <item>"/system_ext/priv-app/SystemUIGoogle/oat/arm64/SystemUIGoogle.odex"</item>
+        <item>"/system/bin/surfaceflinger"</item>
+    </string-array>
+    <integer name="config_pinnerHomePinBytes">6291456</integer>
+    <bool name="config_enableWcgMode">true</bool>
+    <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
+    <bool name="config_automatic_brightness_available">true</bool>
+    <integer name="config_screenBrightnessSettingMinimum">2</integer>
+    <integer name="config_screenBrightnessSettingDefault">184</integer>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+    <integer name="config_screenBrightnessDim">6</integer>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>1</item>
+        <item>4</item>
+        <item>12</item>
+        <item>20</item>
+        <item>40</item>
+        <item>65</item>
+        <item>95</item>
+        <item>140</item>
+        <item>200</item>
+        <item>350</item>
+        <item>650</item>
+        <item>1300</item>
+        <item>2000</item>
+        <item>3300</item>
+        <item>6000</item>
+        <item>10000</item>
+    </integer-array>
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>3.5077</item>
+        <item>6.8394</item>
+        <item>15.2619</item>
+        <item>30.2619</item>
+        <item>40.671</item>
+        <item>52.3019</item>
+        <item>65.2512</item>
+        <item>77.37</item>
+        <item>90.152</item>
+        <item>100.297</item>
+        <item>110.385</item>
+        <item>135.064</item>
+        <item>160.5179</item>
+        <item>195.0267</item>
+        <item>380.2814</item>
+        <item>409.2867</item>
+        <item>427.6287</item>
+    </array>
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+        <item>105</item>
+        <item>110</item>
+        <item>115</item>
+        <item>120</item>
+        <item>125</item>
+        <item>130</item>
+        <item>135</item>
+        <item>140</item>
+        <item>145</item>
+        <item>150</item>
+        <item>155</item>
+        <item>160</item>
+        <item>165</item>
+        <item>170</item>
+        <item>174</item>
+        <item>179</item>
+        <item>184</item>
+        <item>189</item>
+        <item>194</item>
+        <item>199</item>
+        <item>204</item>
+        <item>209</item>
+        <item>214</item>
+        <item>219</item>
+        <item>224</item>
+        <item>229</item>
+        <item>234</item>
+        <item>239</item>
+        <item>244</item>
+        <item>249</item>
+        <item>255</item>
+    </integer-array>
+    <array name="config_screenBrightnessNits">
+        <item>2.0482</item>
+        <item>2.7841</item>
+        <item>3.79505</item>
+        <item>4.4748</item>
+        <item>5.08</item>
+        <item>6.4233</item>
+        <item>8.0848</item>
+        <item>11.6607</item>
+        <item>13.2347</item>
+        <item>15.0676</item>
+        <item>16.8302</item>
+        <item>18.4261</item>
+        <item>20.3103</item>
+        <item>21.9042</item>
+        <item>23.5456</item>
+        <item>25.2137</item>
+        <item>27.1769</item>
+        <item>28.9571</item>
+        <item>30.5244</item>
+        <item>32.3535</item>
+        <item>34.0867</item>
+        <item>42.366</item>
+        <item>51.1309</item>
+        <item>59.52</item>
+        <item>67.744</item>
+        <item>75.9738</item>
+        <item>84.6332</item>
+        <item>94.1525</item>
+        <item>102.2207</item>
+        <item>110.4878</item>
+        <item>117.0405</item>
+        <item>124.3733</item>
+        <item>130.9928</item>
+        <item>140.4247</item>
+        <item>149.3156</item>
+        <item>157.1995</item>
+        <item>165.3651</item>
+        <item>173.2726</item>
+        <item>181.4272</item>
+        <item>189.1402</item>
+        <item>197.5334</item>
+        <item>205.6301</item>
+        <item>213.9381</item>
+        <item>222.2769</item>
+        <item>230.0891</item>
+        <item>238.6084</item>
+        <item>246.5399</item>
+        <item>255.6544</item>
+        <item>263.6221</item>
+        <item>271.9324</item>
+        <item>279.1449</item>
+        <item>288.5736</item>
+        <item>297.6628</item>
+        <item>306.1899</item>
+        <item>314.4511</item>
+        <item>322.1404</item>
+        <item>330.969</item>
+        <item>338.2251</item>
+        <item>346.2251</item>
+        <item>354.567</item>
+        <item>370.799</item>
+        <item>413.1738</item>
+        <item>415.6397</item>
+        <item>417.264</item>
+        <item>419.264</item>
+        <item>421.264</item>
+        <item>424.646</item>
+        <item>427.6287</item>
+    </array>
+    <integer-array name="config_ambientThresholdLevels">
+        <item>1</item>
+        <item>4</item>
+        <item>12</item>
+        <item>20</item>
+        <item>40</item>
+        <item>65</item>
+        <item>95</item>
+        <item>140</item>
+        <item>200</item>
+        <item>350</item>
+        <item>650</item>
+        <item>1300</item>
+        <item>2000</item>
+        <item>3300</item>
+        <item>6000</item>
+        <item>10000</item>
+    </integer-array>
+    <integer-array name="config_ambientBrighteningThresholds">
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>250</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>300</item>
+        <item>400</item>
+        <item>500</item>
+    </integer-array>
+    <integer-array name="config_ambientDarkeningThresholds">
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>200</item>
+        <item>300</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+    <integer name="config_lightSensorWarmupTime">200</integer>
+    <string name="config_displayLightSensorType" translatable="false" />
+    <string name="config_dozeUdfpsLongPressSensorType" translatable="false">org.lineageos.sensor.udfps</string>
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+    <bool name="config_enableBurnInProtection">true</bool>
+    <bool name="config_screen_off_udfps_enabled">true</bool>
+    <string name="config_dozeTapSensorType" translatable="false">org.lineageos.sensor.single_tap</string>
+    <string name="config_dozeDoubleTapSensorType" translatable="false">org.lineageos.sensor.double_tap</string>
+</resources>

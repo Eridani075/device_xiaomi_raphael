@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string-array name="config_restartActionsList">
+        <item>restart</item>
+        <item>restart_systemui</item>
+        <item>restart_recovery</item>
+        <item>restart_bootloader</item>
+        <item>restart_fastboot</item>
+    </string-array>
+    <bool name="config_haveHigherAspectRatioScreen">true</bool>
+    <integer name="config_deviceLightCapabilities">480</integer>
+</resources>
