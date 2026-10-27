@@ -1,0 +1,16 @@
+//
+// SPDX-FileCopyrightText: 2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "libnfc-nci.conf",
+    src: "libnfc-nci.conf",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "libnfc-nxp.conf",
+    src: "libnfc-nxp.conf",
+    vendor: true,
+}
