@@ -1,0 +1,63 @@
+//
+// SPDX-FileCopyrightText: 2021-2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+soong_namespace {
+}
+
+uwu_kernel {
+    name: "kernel",
+    kernel_dir: "kernel/xiaomi/sm8150",
+    kernel_arch: "arm64",
+    image_name: "Image.gz",
+    clang_version: "clang-r563880c",
+
+    config: {
+        defconfig: "vendor/sm8150-perf_defconfig",
+        fragments: [
+            "vendor/xiaomi/sm8150-common.config",
+            "vendor/xiaomi/raphael.config",
+        ],
+    },
+
+    dtb: {
+        enabled: true,
+        target: "dtbs",
+        image_name: "dtb.img",
+    },
+
+    dtbo: {
+        enabled: true,
+        target: "dtbs",
+        image_name: "dtbo.img",
+        page_size: 4096,
+    },
+
+    // BOARD_USES_SOONG_KERNEL makes fsgen require kernel_modules_recovery for
+    // the generated recovery image. This kernel is fully built-in (no =m),
+    // so point the installer at an empty list: it packages zero modules.
+    modules: {
+        enabled: true,
+        recovery_module_install_list: [
+            "device/xiaomi/raphael/configs/kernel/modules_recovery.list",
+        ],
+        recovery_module_load_list: [
+            "device/xiaomi/raphael/configs/kernel/modules_recovery.list",
+        ],
+    },
+}
+
+install_symlink {
+    name: "firmware_WCNSS_qcom_cfg.ini_symlink",
+    vendor: true,
+    installed_location: "firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini",
+    symlink_target: "/vendor/etc/wifi/WCNSS_qcom_cfg.ini",
+}
+
+install_symlink {
+    name: "firmware_wlan_mac.bin_symlink",
+    vendor: true,
+    installed_location: "firmware/wlan/qca_cld/wlan_mac.bin",
+    symlink_target: "/mnt/vendor/persist/wlan_mac.bin",
+}

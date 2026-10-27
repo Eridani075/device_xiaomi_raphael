@@ -1,0 +1,19 @@
+//
+// SPDX-FileCopyrightText: 2021-2026 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    name: "init_xiaomi_raphael",
+    srcs: [
+        "init_xiaomi_raphael.cpp",
+        "libinit_dalvik_heap.cpp",
+        "libinit_variant.cpp",
+        "libinit_utils.cpp",
+    ],
+    whole_static_libs: [
+        "libbase",
+    ],
+    include_dirs: ["system/core/init"],
+    recovery_available: true,
+}
