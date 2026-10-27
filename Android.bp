@@ -16,7 +16,6 @@ uwu_kernel {
     config: {
         defconfig: "vendor/sm8150-perf_defconfig",
         fragments: [
-            "vendor/xiaomi/sm8150-common.config",
             "vendor/xiaomi/raphael.config",
         ],
     },
