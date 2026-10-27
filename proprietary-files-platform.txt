@@ -791,3 +791,11 @@ vendor/lib64/vendor.qti.gnss@4.0-service.so|f97eea8b119fcaa62bb601c324977ef82806
 # GNSS configs
 vendor/etc/flp.conf|8c8642685c225fa0b715c284481018a527dae451
 vendor/etc/gps.conf|6aa19154e9724dfe340b9ce4dd1969129eaac6e5
+
+# Camera (MIUI Camera JNI & Postproc)
+system/lib64/libcamera_algoup_jni.xiaomi.so;DISABLE_CHECKELF|21d014dc95e003d74b372598d796dfffbb19ad73
+system/lib64/libcamera_mianode_jni.xiaomi.so;DISABLE_CHECKELF|01dcd20a2aadf345d678dce2daa1361c74decbe3
+system/lib64/libgui_shim_miuicamera.so;DISABLE_CHECKELF|d50adb96cfad1ad3016cb603b89700056a8f0ea3
+system/lib64/libmicampostproc_client.so;DISABLE_CHECKELF|f96b35d37b34ef61492f4f0fb876283c6b0f3e4f
+system/lib64/vendor.xiaomi.hardware.campostproc@1.0.so;DISABLE_CHECKELF|d8eee9206a975e25ef04cc2c9109e6f67a724cbb
+system_ext/lib64/com.qualcomm.qti.wifidisplayhal@1.0.so;DISABLE_CHECKELF|36e4203126e82380e893be2e5c65c6ee64791cb5
