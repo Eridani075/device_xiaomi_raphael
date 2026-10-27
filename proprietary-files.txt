@@ -90,7 +90,7 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/libFaceGrade.so
 vendor/lib64/libHalSuperSensorServer.so
-vendor/lib64/libSNPE.so
+vendor/lib64/libSNPE.so|f3ffab1527763de07abd6ea4889673574b3b1a48
 vendor/lib64/libSuperSensor.so
 vendor/lib64/libSuperSensorCPU.so
 vendor/lib64/libVDClearShot.so
@@ -255,7 +255,7 @@ vendor/bin/batterysecret
 vendor/etc/init/init.batterysecret.rc
 
 # Display
-vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml
+vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml|f1c8df7cdebb993775105521c0504758e27210de
 vendor/etc/qdcm_calib_data_visionox_r66456_fhd_cmd_dsi_panel.xml
 
 # Fingerprint
