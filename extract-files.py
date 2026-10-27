@@ -5,6 +5,7 @@
 #
 
 import os
+import xml.etree.ElementTree as ET
 
 from extract_utils.fixups_blob import (
     blob_fixup,
@@ -97,6 +98,60 @@ def mpbase_use_padding_shim(ctx, file, file_path, *args, **kwargs):
     os.remove(syms)
 
 
+def adapt_stock_qdcm_calib(ctx, file, file_path, *args, **kwargs):
+    # Map stock MIUI 12.5 QDCM calibration modes to the attribute combinations
+    # expected by HWCColorMode::PopulateColorModes() in the QCOM Display HAL,
+    # dropping MIUI-only game/video filter modes (GM_*, video*) and <Luts>.
+    root = ET.parse(file_path).getroot()
+    disp_modes = root.find('Disp_Modes')
+    if disp_modes is None or disp_modes.get('NumModes') == '6':
+        return
+
+    by_id = {m.get('ModeID'): m for m in disp_modes.findall('Mode')}
+    # (stock_id, new_id, color_gamut, dynamic_range, picture_quality)
+    target_map = [
+        ('40', '0', 'srgb', 'sdr', 'enhanced'),     # Boosted (sRGB Enhanced)
+        ('51', '1', 'dcip3', 'sdr', 'enhanced'),    # Adaptive (DCI-P3 Enhanced)
+        ('01', '2', 'native', 'sdr', None),         # Saturated (Panel Native)
+        ('3', '3', 'srgb', 'sdr', 'standard'),      # Natural (sRGB Colorimetric)
+        ('36', '4', 'dcip3', 'sdr', 'standard'),    # Natural (DCI-P3 Colorimetric)
+        ('39', '5', 'dcip3', 'hdr', 'standard'),    # HDR10 / HLG
+    ]
+
+    selected = []
+    for stock_id, new_id, gamut, dr, pq in target_map:
+        m = by_id[stock_id]
+        m.set('ModeID', new_id)
+        m.set('DynamicRange', dr)
+        m.set('ColorGamut', gamut)
+        if pq is not None:
+            m.set('PictureQuality', pq)
+        else:
+            m.attrib.pop('PictureQuality', None)
+        selected.append(m)
+
+    for m in list(disp_modes):
+        disp_modes.remove(m)
+    for m in selected:
+        disp_modes.append(m)
+
+    disp_modes.set('NumModes', str(len(selected)))
+    disp_modes.set('DefaultMode', '0')
+
+    for luts in root.findall('Luts'):
+        root.remove(luts)
+
+    ET.indent(root, space='    ')
+    xml_body = ET.tostring(root, encoding='unicode')
+    header = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<!--Copyright (c) 2015 Qualcomm Technologies, Inc. All Rights Reserved.\n'
+        'Qualcomm Technologies Proprietary and Confidential.-->\n'
+    )
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(header + xml_body + '\n')
+
+
 blob_fixups: blob_fixups_user_type = {
     'system/framework/WfdCommon.jar': blob_fixup()
         .apktool_patch('blob-patches/WfdCommon.patch'),
@@ -125,6 +180,11 @@ blob_fixups: blob_fixups_user_type = {
             '    # failed getenv on every file it opens (the backlight, several times a second).\n'
             '    setenv ADSP_LIBRARY_PATH ";/vendor/lib/rfsa/adsp;/vendor/lib/rfsa/dsp;/vendor/dsp"\n',
         ),
+    (
+        'vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml',
+        'vendor/etc/qdcm_calib_data_visionox_r66456_fhd_cmd_dsi_panel.xml',
+    ): blob_fixup()
+        .call(adapt_stock_qdcm_calib),
     'vendor/etc/seccomp_policy/atfwd@2.0.policy': blob_fixup()
         .add_line_if_missing('gettid: 1'),
     'vendor/etc/sensors/hals.conf': blob_fixup()

@@ -255,7 +255,7 @@ vendor/bin/batterysecret
 vendor/etc/init/init.batterysecret.rc
 
 # Display
-vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml|f1c8df7cdebb993775105521c0504758e27210de
+vendor/etc/qdcm_calib_data_samsung_ea8076_fhd_cmd_dsi_panel.xml
 vendor/etc/qdcm_calib_data_visionox_r66456_fhd_cmd_dsi_panel.xml
 
 # Fingerprint
