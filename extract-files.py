@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+import copy
 import os
 import xml.etree.ElementTree as ET
 
@@ -101,33 +102,51 @@ def mpbase_use_padding_shim(ctx, file, file_path, *args, **kwargs):
 def adapt_stock_qdcm_calib(ctx, file, file_path, *args, **kwargs):
     # Map stock MIUI 12.5 QDCM calibration modes to the attribute combinations
     # expected by HWCColorMode::PopulateColorModes() in the QCOM Display HAL,
-    # dropping MIUI-only game/video filter modes (GM_*, video*) and <Luts>.
+    # dropping MIUI-only game/video filter modes (GM_*, video*) while keeping
+    # <Luts> (Warm-Cool PCC table).
+    #
+    # Note on stock 3D Gamut LUTs (FeatureType="3"):
+    # - Stock ID "3" (hal_srgb) over-clamps linear Red to 2719/4095 (66.4%) and
+    #   mixes 21.7% Red into Green (890, 3225, 369), causing severe washout/tint.
+    #   Use stock ID "40" (smart_MC, MIUI's calibrated default sRGB mode) for
+    #   both sRGB Enhanced (ID 0) and sRGB Standard (ID 3).
+    # - Stock ID "51" (smart_MC1), "36" (hal_dci_p3), and "39" (testhdr3) on
+    #   Samsung EA8076 have FeatureType="3" enabled with an sRGB-like 3D LUT that
+    #   clamps DCI-P3 back down to sRGB when SDM is in ColorPrimaries_DCIP3 blend
+    #   space. Disable FeatureType="3" on dcip3/hdr modes (matching Visionox
+    #   R66456 smart_MC1 and EA8076 none1) so wide-gamut & HDR use full P3 gamut.
     root = ET.parse(file_path).getroot()
     disp_modes = root.find('Disp_Modes')
     if disp_modes is None or disp_modes.get('NumModes') == '6':
         return
 
     by_id = {m.get('ModeID'): m for m in disp_modes.findall('Mode')}
-    # (stock_id, new_id, color_gamut, dynamic_range, picture_quality)
+    hdr_name = by_id['39'].get('Name', 'testhdr3')
+    # (stock_id, new_id, new_name, color_gamut, dynamic_range, picture_quality, disable_3d_lut)
     target_map = [
-        ('40', '0', 'srgb', 'sdr', 'enhanced'),     # Boosted (sRGB Enhanced)
-        ('51', '1', 'dcip3', 'sdr', 'enhanced'),    # Adaptive (DCI-P3 Enhanced)
-        ('01', '2', 'native', 'sdr', None),         # Saturated (Panel Native)
-        ('3', '3', 'srgb', 'sdr', 'standard'),      # Natural (sRGB Colorimetric)
-        ('36', '4', 'dcip3', 'sdr', 'standard'),    # Natural (DCI-P3 Colorimetric)
-        ('39', '5', 'dcip3', 'hdr', 'standard'),    # HDR10 / HLG
+        ('40', '0', 'smart_MC', 'srgb', 'sdr', 'enhanced', False),
+        ('51', '1', 'smart_MC1', 'dcip3', 'sdr', 'enhanced', True),
+        ('01', '2', 'native', 'native', 'sdr', None, True),
+        ('40', '3', 'hal_srgb', 'srgb', 'sdr', 'standard', False),
+        ('36', '4', 'hal_dci_p3', 'dcip3', 'sdr', 'standard', True),
+        ('39', '5', hdr_name, 'dcip3', 'hdr', 'standard', True),
     ]
 
     selected = []
-    for stock_id, new_id, gamut, dr, pq in target_map:
-        m = by_id[stock_id]
+    for stock_id, new_id, new_name, gamut, dr, pq, disable_3d_lut in target_map:
+        m = copy.deepcopy(by_id[stock_id])
         m.set('ModeID', new_id)
+        m.set('Name', new_name)
         m.set('DynamicRange', dr)
         m.set('ColorGamut', gamut)
         if pq is not None:
             m.set('PictureQuality', pq)
         else:
             m.attrib.pop('PictureQuality', None)
+        if disable_3d_lut:
+            for feat in m.findall('Feature'):
+                if feat.get('FeatureType') in ('3', '4'):
+                    feat.set('Disable', 'true')
         selected.append(m)
 
     for m in list(disp_modes):
@@ -137,9 +156,6 @@ def adapt_stock_qdcm_calib(ctx, file, file_path, *args, **kwargs):
 
     disp_modes.set('NumModes', str(len(selected)))
     disp_modes.set('DefaultMode', '0')
-
-    for luts in root.findall('Luts'):
-        root.remove(luts)
 
     ET.indent(root, space='    ')
     xml_body = ET.tostring(root, encoding='unicode')

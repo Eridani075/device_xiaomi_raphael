@@ -29,7 +29,7 @@
         <item>0</item>
         <item>0</item>
         <item>0</item>
-        <item>9</item>
+        <item>0</item>
     </integer-array>
     <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
     <integer-array name="config_longPressVibePattern">
