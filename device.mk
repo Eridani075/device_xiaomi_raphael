@@ -67,8 +67,19 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.vulkan.deqp.level-2020-03-01.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.vulkan.deqp.level.xml
 
 # Audio & Dolby
-TARGET_USES_DOLBY := true
-$(call inherit-product, vendor/xiaomi/dolby/config.mk)
+# Keep Dolby codec2 (AC-4/DD+) only; the DAP effect stack and its UI are not
+# compatible with the MIUI audio HAL and are intentionally not shipped.
+$(call inherit-product, vendor/xiaomi/dolby/dolby-vendor.mk)
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.dolby.dax.version=DAX3_3.6.0.12_r1 \
+    ro.vendor.dolby.model=PAFM00 \
+    ro.vendor.dolby.device=OP46C3 \
+    ro.vendor.dolby.manufacturer=OPLUS \
+    ro.vendor.dolby.brand=OPLUS
+
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/dolby/configs/media/media_codecs_c2_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_dolby_audio.xml
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
@@ -104,13 +115,8 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set_bool,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 
-ifeq ($(TARGET_USES_DOLBY),true)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects_dolby.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-else
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_io_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_io_policy.conf \

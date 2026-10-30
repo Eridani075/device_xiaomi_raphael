@@ -9,16 +9,10 @@
     "branch": "cnb"
   },
   {
-    "repository": "Evolution-X-Devices/hardware_xiaomi",
+    "repository": "Eridani075/android_hardware_xiaomi",
     "target_path": "hardware/xiaomi",
     "remote": "github-non-los",
-    "branch": "cnb-no-dolby"
-  },
-  {
-    "repository": "crdroidandroid/android_packages_apps_LunarisDolby",
-    "target_path": "packages/apps/LunarisDolby",
-    "remote": "github-non-los",
-    "branch": "16.0"
+    "branch": "cnb"
   },
   {
     "repository": "crdroidandroid/proprietary_vendor_xiaomi_dolby",
@@ -30,12 +24,12 @@
     "repository": "crdroidandroid/android_device_xiaomi_miuicamera",
     "target_path": "device/xiaomi/miuicamera",
     "remote": "gitlab",
-    "branch": "16.0-raphael"
+    "branch": "17.0-raphael"
   },
   {
     "repository": "crdroidandroid/proprietary_vendor_xiaomi_miuicamera",
     "target_path": "vendor/xiaomi/miuicamera",
     "remote": "gitlab",
-    "branch": "16.0-raphael"
+    "branch": "17.0-raphael"
   }
 ]
