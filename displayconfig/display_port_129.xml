@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<displayConfiguration>
+  <highBrightnessMode enabled="false">
+    <transitionPoint>0.85</transitionPoint>
+    <minimumLux>10000</minimumLux>
+    <timing>
+      <timeWindowSecs>1800</timeWindowSecs>
+      <timeMaxSecs>1800</timeMaxSecs>
+      <timeMinSecs>60</timeMinSecs>
+    </timing>
+    <minimumHdrPercentOfScreen>0.1</minimumHdrPercentOfScreen>
+    <allowInLowPowerMode>false</allowInLowPowerMode>
+    <sdrHdrRatioMap>
+      <point><sdrNits>10</sdrNits><hdrRatio>4.0</hdrRatio></point>
+      <point><sdrNits>100</sdrNits><hdrRatio>3.0</hdrRatio></point>
+      <point><sdrNits>400</sdrNits><hdrRatio>1.0</hdrRatio></point>
+    </sdrHdrRatioMap>
+  </highBrightnessMode>
+</displayConfiguration>

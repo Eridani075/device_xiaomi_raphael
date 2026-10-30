@@ -227,6 +227,10 @@ PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage \
     vendor.lineage.livedisplay-service.xiaomi_sm8150
 
+# Display configuration (HDR/SDR ratio map enables gain-map HDR in apps)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/displayconfig/display_port_129.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_port_129.xml
+
 # Media configs
 PRODUCT_PACKAGES += \
     media_codecs.xml \
