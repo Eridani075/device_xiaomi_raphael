@@ -265,6 +265,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigOverlayRaphael \
     DeviceAsWebcamOverlayRaphael \
     FrameworkResOverlayRaphael \
+    LineageBlackTheme \
     LineageDialerOverlayRaphael \
     LineageSDKOverlayRaphael \
     SettingsOverlayRaphael \
