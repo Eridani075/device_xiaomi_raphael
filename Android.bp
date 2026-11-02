@@ -8,14 +8,17 @@ soong_namespace {
 
 uwu_kernel {
     name: "kernel",
-    kernel_dir: "kernel/xiaomi/sm8150",
+    kernel_dir: "kernel/xiaomi/sm8150-5.4",
     kernel_arch: "arm64",
     image_name: "Image.gz",
-    clang_version: "clang-r563880c",
+    clang_version: "clang-r596125",
 
     config: {
-        defconfig: "vendor/sm8150-perf_defconfig",
+        defconfig: "vendor/sm8150-qgki_defconfig",
+        merge_at_once: true,
         fragments: [
+            "vendor/debugfs.config",
+            "vendor/xiaomi/sm8150-common.config",
             "vendor/xiaomi/raphael.config",
         ],
     },
@@ -24,12 +27,17 @@ uwu_kernel {
         enabled: true,
         target: "dtbs",
         image_name: "dtb.img",
+        input_globs: [
+            "sm8150-xiaomi.dtb",
+            "sm8150-v2-xiaomi.dtb",
+        ],
     },
 
     dtbo: {
         enabled: true,
         target: "dtbs",
         image_name: "dtbo.img",
+        input_globs: ["raphael-sm8150-overlay.dtbo"],
         page_size: 4096,
     },
 

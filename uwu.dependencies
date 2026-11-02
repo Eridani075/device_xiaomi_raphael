@@ -4,9 +4,10 @@
     "target_path": "vendor/xiaomi/raphael"
   },
   {
-    "repository": "kernel_xiaomi_raphael",
-    "target_path": "kernel/xiaomi/sm8150",
-    "branch": "cnb"
+    "repository": "erg-raphael-5-4/android_kernel_xiaomi_sm8150",
+    "target_path": "kernel/xiaomi/sm8150-5.4",
+    "branch": "refs/tags/RaphGhost-5.4.302-b29e8f247229-20261013",
+    "remote": "github-non-los"
   },
   {
     "repository": "Eridani075/android_hardware_xiaomi",
