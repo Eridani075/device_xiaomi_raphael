@@ -320,3 +320,7 @@ ro.vendor.camera.hfr.batch_video_buffers=false
 persist.vendor.fingerprint.sensor_location=540|2026|95
 persist.vendor.fingerprint.type=udfps_optical
 persist.vendor.fingerprint.udfps.control_illumination=true
+
+# 5.4 V4L2 rotator rejects buffers; compose rotated layers with the GPU.
+vendor.display.disable_offline_rotator=1
+vendor.display.force_gpu_rotation=1
