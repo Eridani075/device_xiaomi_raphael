@@ -170,7 +170,17 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/init.mi_thermald.rc': blob_fixup()
         .regex_replace('.*seclabel u:r:mi_thermald:s0\n', ''),
     'vendor/etc/init/vendor.qti.media.c2@1.0-service.rc': blob_fixup()
-        .regex_replace(r'writepid.*', 'task_profiles ProcessCapacityHigh HighPerformance'),
+        .regex_replace(r'writepid.*', 'task_profiles ProcessCapacityHigh HighPerformance')
+        .add_line_if_missing('    interface android.hardware.media.c2@1.0::IComponentStore default'),
+    'vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy': blob_fixup()
+        .regex_replace(r'[ \t]+\n', '\n'),
+    # The local VPP HAL is 1.x; the optional haydn Codec2 filter requires VPP 2.0.
+    (
+        'vendor/etc/media/video_system_specs.json',
+        'vendor/etc/video_system_specs.json',
+    ): blob_fixup()
+        .regex_replace(r'("QC2CodecPlugins"\s*:\s*)\[[^\]]*\]', r'\1[]')
+        .regex_replace(r'("filters-available"\s*:\s*)\{[^}]*\}', r'\1{"filters": []}'),
     'vendor/etc/init/vendor.sensors.sscrpcd.rc': blob_fixup()
         .regex_replace(
             r'capabilities BLOCK_SUSPEND\n',

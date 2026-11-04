@@ -431,12 +431,21 @@ system_ext/lib64/libmmparser_lite.so|79790cd5679624d728fdba20292946439a0be592
 vendor/lib/libmmosal.so;MODULE_SUFFIX=_vendor|bc3378f26f668c3060174a6abc8e7a640dd9730d
 vendor/lib64/libmmosal.so;MODULE_SUFFIX=_vendor|85745ad4fc147830e595fce1985b2079566888da
 
-# Media (Codec2)
-vendor/bin/hw/vendor.qti.media.c2@1.0-service|434bd2feb1846a7e02441be2213bac8d2e22c3f7
-vendor/etc/init/vendor.qti.media.c2@1.0-service.rc|03588c8be2ed0c97a3c440bc7f227ce80c2ab7ba|03588c8be2ed0c97a3c440bc7f227ce80c2ab7ba
-vendor/etc/seccomp_policy/codec2.vendor.base.policy|05b0779b5da2ea640984d46a46a796edeaab5fab
-vendor/etc/seccomp_policy/codec2.vendor.ext.policy|6a9a9eb3261048f02805261568097410e1a23b2d
-vendor/lib/libqcodec2.so|18d50108355f56521b14a5d04c72d64b3d92d2a3
+# Media (Codec2) - from haydn V816.0.18.0.UKKMIXM (5.4 V4L2 ABI)
+# Preserved from erg-raphael-5-4/proprietary_vendor_xiaomi_sm8150-common@a3737a37.
+vendor/bin/hw/vendor.qti.media.c2@1.0-service|d2f330fa2f4b2548e36155cddba193b6695f00a7
+vendor/etc/init/vendor.qti.media.c2@1.0-service.rc|11209316ba8aae64b689217bc13b0804f6620678|87ceb9f96c48996a41998496fc5f6378b3015944
+vendor/etc/media/video_system_specs.json|d0732bff6336fa90adfcf6ca010e0e9d0114292e|3afaeccfda6ec4ae478499d8ec1cfa4c41e56a17
+vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy|3dd480257e5c2ad2f776f49783a40904e21ef393|b7ec31e89201f6b5a939fc51ceeb922ef7feca19
+vendor/etc/seccomp_policy/codec2.vendor.ext-arm.policy|a134d3d5d74294ca8164056b42389b1c7dbb2b65
+vendor/etc/video_system_specs.json|fa29471cada89e61aba80dc4dacbd7c9d2f86d5e|3bc7bb776309c157133da7d8915e1c43bd63f7c4
+vendor/lib/libqcodec2_base.so|fa2e46cb4eaeba9505ac5f7717381ae2e4353975
+vendor/lib/libqcodec2_basecodec.so|f16c9bad3602408e9f728edcea8378ec29947ed7
+vendor/lib/libqcodec2_core.so|3433c36bbd6dda926967e0a34cc076236d0bf670
+vendor/lib/libqcodec2_hooks.so|0b1b07bfa43baf9d805fe6f4ed903c0c2c96a069
+vendor/lib/libqcodec2_platform.so|168f007592cf35f9443902a92e1cd2be67b509fc
+vendor/lib/libqcodec2_utils.so|63911243cc5a97f4d1ce46d0be030ccb1afc7c32
+vendor/lib/libqcodec2_v4l2codec.so|b2c5b957d3f50ac7c0828802db94e3e0ae05b070
 
 # Media configs
 vendor/etc/media_profiles_vendor.xml:vendor/etc/media_profiles_V1_0.xml|85a5a4a1d28ce63c284c3eccc2e2ed4d0a28edce|85a5a4a1d28ce63c284c3eccc2e2ed4d0a28edce
