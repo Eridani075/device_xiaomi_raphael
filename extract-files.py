@@ -6,6 +6,7 @@
 
 import copy
 import os
+import re
 import xml.etree.ElementTree as ET
 
 from extract_utils.fixups_blob import (
@@ -172,6 +173,17 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/init/vendor.qti.media.c2@1.0-service.rc': blob_fixup()
         .regex_replace(r'writepid.*', 'task_profiles ProcessCapacityHigh HighPerformance')
         .add_line_if_missing('    interface android.hardware.media.c2@1.0::IComponentStore default'),
+    # Venus NV12 uses 128-byte stride / 32 scanlines on SM8150, not 512 / 512.
+    # Retarget only its two TBB entries; keep HEIF, NV21 and UBWC unchanged.
+    'vendor/lib/libqcodec2_utils.so': blob_fixup()
+        .binary_regex_replace(
+            re.escape(bytes.fromhex('df e8 02 f0 1e 39 04 39 39 24 04 00')),
+            bytes.fromhex('df e8 02 f0 04 39 04 39 39 24 04 00'),
+        )
+        .binary_regex_replace(
+            re.escape(bytes.fromhex('df e8 02 f0 1e 5b 04 5b 5b 30 47 00')),
+            bytes.fromhex('df e8 02 f0 04 5b 04 5b 5b 30 47 00'),
+        ),
     'vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy': blob_fixup()
         .regex_replace(r'[ \t]+\n', '\n'),
     # The local VPP HAL is 1.x; the optional haydn Codec2 filter requires VPP 2.0.

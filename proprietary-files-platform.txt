@@ -444,7 +444,7 @@ vendor/lib/libqcodec2_basecodec.so|f16c9bad3602408e9f728edcea8378ec29947ed7
 vendor/lib/libqcodec2_core.so|3433c36bbd6dda926967e0a34cc076236d0bf670
 vendor/lib/libqcodec2_hooks.so|0b1b07bfa43baf9d805fe6f4ed903c0c2c96a069
 vendor/lib/libqcodec2_platform.so|168f007592cf35f9443902a92e1cd2be67b509fc
-vendor/lib/libqcodec2_utils.so|63911243cc5a97f4d1ce46d0be030ccb1afc7c32
+vendor/lib/libqcodec2_utils.so|63911243cc5a97f4d1ce46d0be030ccb1afc7c32|43ba4d1fc9bb208c1e056e1f83324083e4cec08a
 vendor/lib/libqcodec2_v4l2codec.so|b2c5b957d3f50ac7c0828802db94e3e0ae05b070
 
 # Media configs
