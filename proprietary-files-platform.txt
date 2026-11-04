@@ -1,4 +1,4 @@
-# SM8150 platform blobs extracted from Android 13 (nabu V816.0.6.0.TKXMIXM / vayu V14.0.3.0.TJUMIXM).
+# SM8150 platform blobs from nabu V816.0.6.0.TKXMIXM / vayu V14.0.3.0.TJUMIXM unless noted below.
 # All entries are pinned so extracting Raphael MIUI 12.5 blobs restores these from backup automatically.
 
 
@@ -190,6 +190,10 @@ vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
 vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;MODULE_SUFFIX=_vendor|188222f7cda270cad18757cf59710978f8657105
 vendor/lib64/libdpmqmihal.so|84dad3cd086791473878b353ef5aef6b6d495137
 
+# DRM (QSEECom) - from haydn V816.0.18.0.UKKMIXM (5.4 ION heap ABI)
+# Preserved from erg-raphael-5-4/proprietary_vendor_xiaomi_sm8150-common@a3737a37.
+vendor/lib64/libQSEEComAPI.so|61cc79a921e1ad507c662dd4f8ebabcb8889608f
+
 # DRM (QSEECom)
 vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service|ffbf257b96f2e7a69d192dff0badf636a4f805e4
 vendor/bin/qseecomd|1721d6999807c7aacc857a2001133f03f4c7c4a1
@@ -199,7 +203,6 @@ vendor/etc/gpfspath_oem_config.xml|7aeade35b0bbe27530f6aca8c1ed5192a7acf59d
 vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so|82ab2c21730099498c7c63105b32cbe485aa9462
 vendor/lib64/libGPreqcancel.so|7e47b162a5baa4570a8f53f4d4451fd57c391210
 vendor/lib64/libGPreqcancel_svc.so|35b71c1ff3816de1089901d3b32af39ece4c315c
-vendor/lib64/libQSEEComAPI.so|835aca441f1cafc0be2d7df9bffe11d9b1534e35
 vendor/lib64/libSecureUILib.so|43203f3bea932e602672177eee2fe94df3e98e70
 vendor/lib64/libStDrvInt.so|9750d6defe78d06b92221f091f3dcf77c40ee596
 vendor/lib64/libdrmfs.so|622e74033bfe9f07d4686a936367b620fcdb3a7c
