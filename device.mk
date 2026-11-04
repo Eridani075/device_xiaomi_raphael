@@ -23,6 +23,11 @@ $(call inherit-product, hardware/qcom-caf/common/common.mk)
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 28
 
+# Linux 5.4 uses uclamp; override the API 28 schedtune compatibility defaults.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(LOCAL_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+
 # Permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml \
