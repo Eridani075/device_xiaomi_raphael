@@ -208,6 +208,8 @@ blob_fixups: blob_fixups_user_type = {
         .call(adapt_stock_qdcm_calib),
     'vendor/etc/seccomp_policy/atfwd@2.0.policy': blob_fixup()
         .add_line_if_missing('gettid: 1'),
+    'vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy': blob_fixup()
+        .add_line_if_missing('madvise: 1'),
     'vendor/etc/sensors/hals.conf': blob_fixup()
         .add_line_if_missing('sensors.udfps.so'),
     'vendor/lib/hw/audio.primary.raphael.so': blob_fixup()
