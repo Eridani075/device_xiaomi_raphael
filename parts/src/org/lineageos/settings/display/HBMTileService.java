@@ -57,7 +57,7 @@ public class HBMTileService extends TileService {
             service.setEnabled(enabled);
             sharedPrefs.edit().putBoolean(HBM_ENABLE_KEY, enabled).apply();
             updateUI(enabled);
-        } catch (RemoteException e) {
+        } catch (RemoteException | UnsupportedOperationException e) {
             Log.e(TAG, "Failed to toggle HBM", e);
         }
     }

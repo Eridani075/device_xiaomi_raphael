@@ -47,7 +47,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             }
 
             service.setEnabled(hbmEnabled);
-        } catch (RemoteException e) {
+        } catch (RemoteException | UnsupportedOperationException e) {
             Log.e(TAG, "Failed to restore HBM state", e);
         }
     }
