@@ -116,3 +116,17 @@ prebuilt_etc {
     src: "etc/ueventd.qcom.rc",
     vendor: true,
 }
+
+prebuilt_etc {
+    name: "vendor.qti.secure_element@1.2-service.rc",
+    src: "etc/vendor.qti.secure_element@1.2-service.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "vendor.qti.esepowermanager@1.1-service.rc",
+    src: "etc/vendor.qti.esepowermanager@1.1-service.rc",
+    sub_dir: "init",
+    vendor: true,
+}

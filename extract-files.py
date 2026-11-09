@@ -272,6 +272,9 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
     'vendor.qti.qspmhal@1.0': lib_fixup_remove,
+    # eSE: blob is installed via MODULE_SUFFIX=_vendor to avoid colliding with
+    # the external/libchrome source module; point dependents at that module.
+    'libchrome': lib_fixup_vendor_suffix,
 }
 
 namespace_imports = [

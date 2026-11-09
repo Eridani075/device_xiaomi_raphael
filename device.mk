@@ -252,7 +252,6 @@ PRODUCT_PACKAGES += \
 # NFC & eSE
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
-    android.hardware.secure_element@1.0-service \
     com.android.nfc_extras \
     libnfc-nci.conf \
     libnfc-nxp.conf \
@@ -327,7 +326,9 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     init.xiaomi.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    vendor.qti.secure_element@1.2-service.rc \
+    vendor.qti.esepowermanager@1.1-service.rc
 
 # Sensors
 PRODUCT_PACKAGES += \
