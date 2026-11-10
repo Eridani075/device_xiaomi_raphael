@@ -222,6 +222,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libaudioroute.so', 'libaudioroute-v34.so'),
     'vendor/lib64/camera/components/com.qti.node.watermark.so': blob_fixup()
         .add_needed('libpiex_shim.so'),
+    'vendor/lib64/jcos_nq_client.so': blob_fixup()
+        .replace_needed('libchrome.so', 'libchrome_ese.so'),
     (
         'vendor/lib64/libalLDC.so',
         'vendor/lib64/libalAILDC.so',
@@ -253,8 +255,12 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libmpbase_shim.so'),
     'vendor/lib64/libwvhidl.so': blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    'vendor/lib64/ls_nq_client.so': blob_fixup()
+        .replace_needed('libchrome.so', 'libchrome_ese.so'),
     'vendor/lib64/mediadrm/libwvdrmengine.so': blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    'vendor/lib64/se_nq_extn_client.so': blob_fixup()
+        .replace_needed('libchrome.so', 'libchrome_ese.so'),
 }  # fmt: skip
 
 
@@ -272,9 +278,6 @@ lib_fixups: lib_fixups_user_type = {
         'vendor.qti.imsrtpservice@3.0',
     ): lib_fixup_vendor_suffix,
     'vendor.qti.qspmhal@1.0': lib_fixup_remove,
-    # eSE: blob is installed via MODULE_SUFFIX=_vendor to avoid colliding with
-    # the external/libchrome source module; point dependents at that module.
-    'libchrome': lib_fixup_vendor_suffix,
 }
 
 namespace_imports = [

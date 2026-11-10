@@ -805,9 +805,9 @@ vendor/lib64/android.hardware.secure_element@1.0-impl.so|84dad412e13343c4b4635d0
 vendor/lib64/vendor.qti.esepowermanager@1.0.so|1d9663e2ad911aa75da4b07a2b17dd023d4c796e
 vendor/lib64/vendor.qti.esepowermanager@1.1.so|3e71c2927fe56732b081b6476df2efbd58d27178
 vendor/lib64/hw/vendor.qti.esepowermanager@1.1-impl.so|c6b853c5a008123490afeb103a979daf1eb42ee3
-vendor/lib64/se_nq_extn_client.so|7fc157026cdeaf0f54e0c5c357b552bb6f02cfec
-vendor/lib64/ls_nq_client.so|5d48cde6a77f3944254d0974075a2091f8031cad
-vendor/lib64/jcos_nq_client.so|5da6107919c29e7b1d24fbeda759810bb5c0e33d
-# libchrome: keep module name unique against external/libchrome (source module);
-# install stem/SONAME stay libchrome.so, deps redirected via lib_fixup_vendor_suffix
-vendor/lib64/libchrome.so;MODULE_SUFFIX=_vendor|7bdfa498ab22e56f595b2f618b08e9c6583ad2df
+vendor/lib64/se_nq_extn_client.so|7fc157026cdeaf0f54e0c5c357b552bb6f02cfec|6cec6b92529cb19828b60abf3da2c17762833bdf
+vendor/lib64/ls_nq_client.so|5d48cde6a77f3944254d0974075a2091f8031cad|25adf061ce92c109dd9d7dc4bde854e3c92b5c4b
+vendor/lib64/jcos_nq_client.so|5da6107919c29e7b1d24fbeda759810bb5c0e33d|68ef8a6f58789e745f2eaa8ece53ca86057795a0
+# eSE libchrome: platform ABI reuse is unproven, so keep the stock library under
+# a private install name/SONAME; the NQ clients are re-pointed via replace_needed
+vendor/lib64/libchrome.so:vendor/lib64/libchrome_ese.so;FIX_SONAME|7bdfa498ab22e56f595b2f618b08e9c6583ad2df|4ca918da7b01a5431ab486b6e0100c77779715f5
