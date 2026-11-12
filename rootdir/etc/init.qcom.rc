@@ -906,6 +906,17 @@ service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service
     socket audio_hw_socket seqpacket 0666 system system
     onrestart restart audioserver
 
+# libdpps requires an init-provided pps socket for successful initialization.
+service vendor.hwcomposer-2-4 /vendor/bin/hw/android.hardware.graphics.composer@2.4-service
+    override
+    class hal animation
+    user system
+    group graphics drmrpc
+    capabilities SYS_NICE
+    onrestart restart surfaceflinger
+    task_profiles ServiceCapacityLow
+    socket pps stream 0660 system system
+
 #nv_mac is added by Xiaomi-Wifi
 service nv_mac /vendor/bin/nv_mac
     class late_start
