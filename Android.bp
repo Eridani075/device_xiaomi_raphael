@@ -6,15 +6,6 @@
 soong_namespace {
 }
 
-cc_library_static {
-    name: "libperfmgr-ext.raphael",
-    defaults: ["android.hardware.power-ndk_shared"],
-    srcs: ["power/PowerModeExtension.cpp"],
-    shared_libs: ["libbase"],
-    vendor: true,
-    visibility: ["//hardware/lineage/interfaces/power-libperfmgr:__pkg__"],
-}
-
 uwu_kernel {
     name: "kernel",
     kernel_dir: "kernel/xiaomi/sm8150-5.4-soviet",
