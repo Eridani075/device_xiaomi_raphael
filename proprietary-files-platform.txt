@@ -151,8 +151,17 @@ vendor/lib64/libsdm-disp-vndapis.so|22e5d18df12748a9175883bdceeed721e4b1b3dc
 vendor/lib64/libsdmextension.so|0aed8ab6ecf878ae57ecba4b8a9bfb0d184ab5f7
 vendor/lib64/libtinyxml2_1.so|621dbc8e3d0529b9ee35393698de82ea006ca7fa
 
-# Display (SDM) - from qssi_NX627J-user 11 RKQ1.200826.002 nubia.20210420.160129 release-keys
-# libsdedrm is built from the SM8150 display HAL for the 5.4 DRM ABI.
+# Display (HWC/SDM/SDE) - from the validated Raphael 5.4 legacy-display test vendor.
+# ARM64 HWC/SDM/DRM utils are from the 20261031 4.14 build and must stay together.
+# ARM retains the corresponding 5.4 test vendor files.
+vendor/lib/hw/hwcomposer.qcom.so|1c63ed6110c931a86a7102f1271dc7d1f6f4ac50
+vendor/lib/libdrmutils.so|39314f49cfbfa596fef8793f4de5f7ff77b93e22
+vendor/lib/libsdedrm.so|14d68cf7b14a14b5d2bcd73738721fde4e03f6b6
+vendor/lib/libsdmcore.so|fbf15249c094c8325f162e231482fc3f08a50645
+vendor/lib64/hw/hwcomposer.qcom.so|937ad92d5ee1c10aec93a4e3f13c986a7652a6bc
+vendor/lib64/libdrmutils.so|009a13688f2a785c4da0779602827b5a5656d6f5
+vendor/lib64/libsdedrm.so|582910d21139781ad9e414c35207584f51e035e2
+vendor/lib64/libsdmcore.so|3342d4c7a1bcf9598221daee7e84ae8eb94e5a08
 
 # Display calibration data
 vendor/etc/hdr_config.cfg|14bd7906643998c6b6bb51be5f20007232eaccc3

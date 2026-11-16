@@ -1,4 +1,19 @@
-# SM8150 display for Raphael on Linux 5.4
+# SM8150 display fallback for Raphael on Linux 5.4
+
+The normal build uses unmodified LineageOS SM8150 display sources for gralloc
+and the other common modules, the upstream HIDL 2.4 composer service, and the
+matched HWC/SDM/DRM prebuilts listed in `proprietary-files-platform.txt`.
+Extract those display files from the validated mixed vendor image
+(`vendor-5.4-legacy-display-test.img`, SHA-256
+`5587920b7c04bb07d50c81c243b0feb505cdfea073c17c77e09647933d826f62`).
+Its ARM64 display libraries came from the signed 20261031 4.14 build; its ARM
+libraries are unchanged from the 20261111 5.4 baseline. Keep the matched
+libraries together. The `pps` override and both panel-port configs remain in
+the device tree.
+
+This mailbox is kept as a fallback. Restore the source module selections in
+both the device and vendor trees before applying it; do not apply it over the
+default prebuilt build.
 
 Pin `hardware/qcom-caf/sm8150/display` to LineageOS's
 `lineage-24.0-caf-sm8150` commit
