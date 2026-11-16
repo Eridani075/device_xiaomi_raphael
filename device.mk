@@ -239,9 +239,12 @@ PRODUCT_PACKAGES += \
     android.hardware.light-service.lineage \
     vendor.lineage.livedisplay-service.xiaomi_sm8150
 
-# Display configuration (HDR/SDR ratio map enables gain-map HDR in apps)
+# Display configuration (HDR/SDR ratio map enables gain-map HDR in apps).
+# Linux 4.14 reports DSI port 129; the 5.4 source SDE-DRM backend reports the
+# same panel as port 130 because its encoder port is 1-indexed.
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/displayconfig/display_port_129.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_port_129.xml
+    $(LOCAL_PATH)/displayconfig/display_port_129.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_port_129.xml \
+    $(LOCAL_PATH)/displayconfig/display_port_129.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_port_130.xml
 
 # Media configs
 PRODUCT_PACKAGES += \
