@@ -174,7 +174,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r'writepid.*', 'task_profiles ProcessCapacityHigh HighPerformance')
         .add_line_if_missing('    interface android.hardware.media.c2@1.0::IComponentStore default'),
     # Venus NV12 uses 128-byte stride / 32 scanlines on SM8150, not 512 / 512.
-    # Retarget only its two TBB entries; keep HEIF, NV21 and UBWC unchanged.
+    # Fix both the V4L2 helpers and the C2D converter used for RGB screen capture.
+    # Assembly source: patches/codec2/sm8150-c2d-nv12.S. Keep 0x114/0x116 at 512.
     'vendor/lib/libqcodec2_utils.so': blob_fixup()
         .binary_regex_replace(
             re.escape(bytes.fromhex('df e8 02 f0 1e 39 04 39 39 24 04 00')),
@@ -183,6 +184,32 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(
             re.escape(bytes.fromhex('df e8 02 f0 1e 5b 04 5b 5b 30 47 00')),
             bytes.fromhex('df e8 02 f0 04 5b 04 5b 5b 30 47 00'),
+        )
+        .binary_regex_replace(
+            re.escape(bytes.fromhex(
+                '00 2a 00 f0 aa 80 00 2b 00 f0 a7 80 02 f2 ff 10 '
+                '40 f2 ff 11 ff 22 88 43 59 1c 02 eb 51 01 03 f2 ff 12 '
+                '21 f0 ff 01 6f f3 08 02 11 44 01 fb 00 f4 63 e1'
+            )),
+            bytes.fromhex(
+                '40 f2 ff 10 01 46 b5 f5 8b 7f 84 bf 7f 20 1f 21 '
+                '02 44 82 43 0b 44 8b 43 5a 43 02 eb 52 04 40 f6 ff 70 '
+                '04 44 84 43 00 f0 68 b9 00 bf 00 bf 00 bf 00 bf'
+            ),
+        )
+        .binary_regex_replace(
+            re.escape(bytes.fromhex(
+                '02 f2 ff 10 40 f2 ff 11 88 43 03 f2 ff 11 00 2a '
+                '08 bf 10 46 6f f3 08 01 00 2b 08 bf 19 46 48 43 63 e0'
+            )),
+            bytes.fromhex(
+                '40 f2 ff 10 01 46 b4 f5 8b 7f 84 bf 7f 20 1f 21 '
+                '02 44 82 43 0b 44 8b 43 5a 43 10 46 00 f0 65 b8 00 bf'
+            ),
+        )
+        .binary_regex_replace(
+            re.escape(bytes.fromhex('df e8 00 f0 13 40 04 40 40 27 3c 00')),
+            bytes.fromhex('df e8 00 f0 04 40 04 40 40 27 3c 00'),
         ),
     'vendor/etc/seccomp_policy/codec2.vendor.base-arm.policy': blob_fixup()
         .regex_replace(r'[ \t]+\n', '\n'),
