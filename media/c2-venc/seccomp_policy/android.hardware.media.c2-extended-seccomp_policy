@@ -1,0 +1,49 @@
+# ARM64 additions to the platform Codec2 seccomp policy for the V4L2 service.
+# Based on the SM8150 source encoder's hardware policy. The platform still
+# supplies its ioctl, mmap, and mprotect rules.
+
+bind: 1
+clock_nanosleep: 1
+close_range: 1
+connect: 1
+dup3: 1
+epoll_create1: 1
+epoll_ctl: 1
+epoll_pwait: 1
+eventfd2: 1
+faccessat2: 1
+fcntl: 1
+fsetxattr: 1
+getcwd: 1
+getpriority: 1
+getsockopt: 1
+inotify_add_watch: 1
+inotify_init1: 1
+inotify_rm_watch: 1
+membarrier: 1
+mkdirat: 1
+pselect6: 1
+recvfrom: 1
+rseq: 1
+rt_sigtimedwait: 1
+sched_get_priority_max: 1
+sched_get_priority_min: 1
+sched_getaffinity: 1
+sched_getparam: 1
+sched_getscheduler: 1
+sched_setaffinity: 1
+sched_setparam: 1
+sched_setscheduler: 1
+sendmsg: 1
+sendto: 1
+setsockopt: 1
+socket: 1
+splice: 1
+statfs: 1
+sysinfo: 1
+tee: 1
+timer_create: 1
+timer_delete: 1
+timer_settime: 1
+uname: 1
+unlinkat: 1
