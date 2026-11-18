@@ -251,6 +251,9 @@ PRODUCT_PACKAGES += \
     media_codecs_c2.xml \
     media_codecs_performance_c2.xml
 
+# Source Codec2 encoders for explicit recording validation.
+PRODUCT_PACKAGES_DEBUG += sm8150-c2-venc-service
+
 # NFC & eSE
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
