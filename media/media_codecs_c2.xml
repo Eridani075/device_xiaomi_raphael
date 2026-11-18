@@ -236,7 +236,8 @@
     </Decoders>
 
     <Encoders>
-        <MediaCodec name="c2.sm8150.avc.encoder" type="video/avc">
+        <!-- Prefer the source encoders for MIME-based selection on Raphael. -->
+        <MediaCodec name="c2.sm8150.avc.encoder" type="video/avc" rank="128">
             <Limit name="size" min="96x96" max="4096x4096" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
@@ -247,7 +248,7 @@
             <Limit name="concurrent-instances" max="16" />
             <Feature name="bitrate-modes" value="VBR,CBR" />
         </MediaCodec>
-        <MediaCodec name="c2.sm8150.hevc.encoder" type="video/hevc">
+        <MediaCodec name="c2.sm8150.hevc.encoder" type="video/hevc" rank="128">
             <Limit name="size" min="96x96" max="4096x4096" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
